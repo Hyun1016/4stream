@@ -8,7 +8,7 @@ st.title('Sidabari Project ')
 
 st.write('# Gender')
 
-man_woman = st.slider('gender', 0, 80, 15)
+man_woman = st.slider('gender', 20, 80, 60)
 # filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 def open_img(sexibility):
@@ -18,38 +18,49 @@ def open_img(sexibility):
 
 st.image(open_img(man_woman))
 
-st.subheader(f'Gender of the one: {"%0.3f" %(man_woman/30 * 100)} % woman')
+st.subheader(f'Gender of the One: {"%0.3f" %(man_woman/80 * 100)} % Man')
 
-
+#------------------------------------------------------------------------------------
 
 st.write('# Season')
 
-man_woman = st.slider('gender', 0, 30, 15)
-# filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
+# Woman 1 : 1046 , Woman 2: 3672,  Man 1: 1771  Man 2:
 
-def open_img(sexibility):
-    img_path = f'img/img{"%0.2d" %sexibility}.png'
+option = st.selectbox(
+    'Sellect Option',
+    ('Woman 1', 'Woman 2', 'Man 1', 'Man 2'))
+
+st.write('Seasonal look of :', option)
+
+
+man_woman = st.slider('Seasonal', 0, 90 , 45)
+# filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
+dict_opt = {'Woman 1' : 1046 , 'Woman 2': 3672 , 'Man 1': 1771 , 'Man 2':14369} #dict for selectbar option
+def open_img_sl(sexibility,opt):
+    img_path = f'season/{dict_opt[opt]}/{dict_opt[opt]}_{"%03d" %sexibility}.jpeg'
     img = Image.open(img_path)
     return img
-
-st.image(open_img(man_woman))
+st.image(open_img_sl(man_woman+29,option))
 # st.image(frames[man_woman])
 
+st.subheader(f'Seasonal : {"%0.3f" %(man_woman/90 * 100)} % Summer')
 
-st.subheader(f'Gender of the one: {"%0.3f" %(man_woman/30 * 100)} % woman')
+#-------------------------------------------------------------------------------------------------------------
+# st.write('# trend')
 
 
-st.write('# trend')
+#----------------------------------We don't have images for this---------------------------------- 
 
-man_woman = st.slider('gender', 0, 30, 15)
-# filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
-def open_img(sexibility):
-    img_path = f'img/img{"%0.2d" %sexibility}.png'
-    img = Image.open(img_path)
-    return img
+# man_woman = st.slider('gender', 0, 30, 15)
+# # filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
-st.image(open_img(man_woman))
+# def open_img(sexibility):
+#     img_path = f'img/img{"%0.2d" %sexibility}.png'
+#     img = Image.open(img_path)
+#     return img
 
-st.subheader(f'Gender of the one: {"%0.3f" %(man_woman/30 * 100)} % woman')
+# st.image(open_img(man_woman))
+
+# st.subheader(f'Gender of the one: {"%0.3f" %(man_woman/30 * 100)} % woman')
 
